@@ -580,7 +580,16 @@ class AsyncAIChatReplacement:
         self.chat = AsyncAIChatReplacement._Chat(wrapper)
 
 
-from browser_use.llm import ChatOllama, ChatOpenRouter, ChatGoogle, ChatAnthropic, ChatGroq, ChatOpenAI
+try:
+    from browser_use.llm import ChatOllama, ChatOpenRouter, ChatGoogle, ChatAnthropic, ChatGroq, ChatOpenAI
+except ImportError:
+    class Dummy: pass
+    ChatOllama = Dummy
+    ChatOpenRouter = Dummy
+    ChatGoogle = Dummy
+    ChatAnthropic = Dummy
+    ChatGroq = Dummy
+    ChatOpenAI = Dummy
 
 class BrowserCompatibleChatWrapper(ChatOpenRouter):
     """

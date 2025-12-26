@@ -35,7 +35,7 @@ def get_git_info():
     except:
         tag = ""
 
-    version = branch[0].upper() + " " + ( short_tag or commit_hash[:7] )
+    version = (branch[0].upper() if branch else "D") + " " + ( short_tag or commit_hash[:7] )
 
     # Create the dictionary with collected information
     git_info = {
